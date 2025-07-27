@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4 Years of Us 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Great Vibes', cursive;
+      background: linear-gradient(120deg, #ffd6e8, #fff0f5);
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      font-size: 3.5em;
+      color: #d6336c;
+      animation: fadeIn 3s ease-in;
+    }
+
+    p {
+      font-size: 1.5em;
+      color: #444;
+      margin-bottom: 30px;
+    }
+
+    .timeline {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .year-card {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .year-card:hover {
+      transform: scale(1.02);
+    }
+
+    .year {
+      font-size: 2em;
+      color: #ff69b4;
+    }
+
+    .heart, .petal {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .heart::before, .petal::before {
+      content: '❤️';
+      font-size: 20px;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    audio {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      z-index: 10000;
+    }
+
+    @media(max-width: 600px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      .year-card {
+        flex: 0 0 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Happy Anniversary Guggu 💖</h1>
+    <p>Since 2021, every moment with you has been pure magic. Here's to our journey! 🌹</p>
+
+    <div class="timeline">
+      <div class="year-card">
+        <div class="year">2021</div>
+        <p>The year we began our beautiful journey 💑</p>
+      </div>
+      <div class="year-card">
+        <div class="year">2022</div>
+        <p>Growing together through every up and down 💕</p>
+      </div>
+      <div class="year-card">
+        <div class="year">2023</div>
+        <p>More laughter, more love, and stronger than ever 💪❤️</p>
+      </div>
+      <div class="year-card">
+        <div class="year">2024</div>
+        <p>Making unforgettable memories, hand in hand ✨</p>
+      </div>
+      <div class="year-card">
+        <div class="year">2025</div>
+        <p>Still crazy in love... Forever and always 🥰</p>
+      </div>
+    </div>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    function createFallingEmoji(emoji) {
+      const el = document.createElement('div');
+      el.className = emoji === '❤️' ? 'heart' : 'petal';
+      el.style.left = Math.random() * window.innerWidth + 'px';
+      el.style.top = '-30px';
+      el.style.animation = `fall ${5 + Math.random() * 5}s linear`;
+      el.style.fontSize = `${16 + Math.random() * 10}px`;
+      el.style.opacity = 0.8;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 10000);
+    }
+
+    setInterval(() => {
+      createFallingEmoji(Math.random() > 0.5 ? '🌹' : '❤️');
+    }, 300);
+  </script>
+</body>
+</html>
